@@ -30,8 +30,8 @@ class UserController{
         return i;
       }
     })
-    let file = elements[0].file[0];
-    
+    let file = elements[0].files[0];
+
     fileReader.onload = ()=>{
       
       resolve(fileReader.result);
@@ -57,7 +57,9 @@ class UserController{
       if(f.name == 'gender'){
         if(f.checked){
           user[f.name] = f.value;
-        }} else {
+        }}else if (f.name == 'admin'){
+          user[f.name] = f.checked;
+        } else {
           user[f.name] = f.value;
         }
     });
@@ -74,13 +76,14 @@ class UserController{
       );
   }
   addLine(dataUser){
- 
-    this.tableEl.innerHTML = `
+    let tr = document.createElement('tr');
+
+    tr.innerHTML = `
           <tr>
               <td><img src="${dataUser.photo}" alt="User Image" class="img-circle img-sm"></td>
               <td>${dataUser.name}</td>
               <td>${dataUser.email}</td>
-              <td>${dataUser.admin}</td>
+              <td>${(dataUser.admin) ? 'Sim' : 'Não'}</td>
               <td>${dataUser.birth}</td>
               <td>
                   <button type="button" class="btn btn-primary btn-xs btn-flat">Editar</button>
@@ -88,6 +91,7 @@ class UserController{
               </td>
           </tr>
       `;
+      this.tableEl.appendChild(tr);
     
   
   }
