@@ -114,6 +114,7 @@ class UserController{
     tr.querySelector(".btn-delete").addEventListener('click', (e)=>{
       if(confirm ('Deseja realmente excluir?')){
         tr.remove();
+        this.updateCount();
       }
     });
     tr.querySelector(".btn-edit").addEventListener('click', (e)=>{
