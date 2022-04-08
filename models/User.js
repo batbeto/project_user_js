@@ -15,9 +15,6 @@ class User {
     return this._id;
   }
 
-  set id(id){
-    this._id = id;
-  }
   get name(){
     return this._name;
   }
@@ -92,14 +89,14 @@ class User {
     
     if(this.id > 0){
       users.map(u => {
-        if (u.id == this.id){
+        if (u._id == this.id){
           Object.assign(u, this);
         }
         return u;
       });
 
     } else {
-      this.id = this.getNewID();
+      this._id = this.getNewID();
       users.push(this);
 
     }
