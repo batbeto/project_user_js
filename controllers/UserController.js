@@ -180,7 +180,7 @@ class UserController{
  
 
   selectAll(){
-    let users = this.getUsersStorage()
+    let users = User.getUsersStorage();
     users.forEach((dataUser)=>{
       let user = new User();
       user.loadFromJSON(dataUser);
