@@ -92,8 +92,8 @@ class User {
     
     if(this.id > 0){
       users.map(u => {
-        if (u.id === this.id){
-          u = this;
+        if (u.id == this.id){
+          Object.assign(u, this);
         }
         return u;
       });
