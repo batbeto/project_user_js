@@ -77,10 +77,12 @@ class User {
   }
 
   getNewID(){
-    if (!window.id) window.id = 0;
+    let usersID = parseInt(localStorage.getItem('usersID'));
 
-    id++;
-    return id;
+    if (!usersID > 0) usersID = 0;
+    usersID++;
+    localStorage.setItem('usersID', usersID);
+    return usersID;
 
   }
 
@@ -110,5 +112,6 @@ class User {
         users.splice(index, 1);
       }
     });
+    localStorage.setItem('users',JSON.stringify(users));
   }
 }
